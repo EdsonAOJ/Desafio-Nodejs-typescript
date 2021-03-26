@@ -6,15 +6,16 @@ interface IRequest {
 }
 
 class ShowUserProfileUseCase {
-  constructor(private usersRepository: IUsersRepository) { }
+  constructor(private usersRepository: IUsersRepository) {}
 
   execute({ user_id }: IRequest): User {
-    const userAlreadyExists = this.usersRepository.findById(user_id)
+    const user = this.usersRepository.findById(user_id);
 
-    if (userAlreadyExists) {
-      throw new Error("there's not user with this id")
+    if (!user) {
+      throw new Error("There is no user with the given id");
     }
-    return userAlreadyExists
+
+    return user;
   }
 }
 
