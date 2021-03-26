@@ -15,6 +15,7 @@ class ShowUserProfileUseCase {
       throw new Error("There is no user with the given id");
     }
 
+    
     return user;
   }
 }
